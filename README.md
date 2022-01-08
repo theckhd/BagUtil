@@ -1,8 +1,7 @@
-# BagUtil
-
 **NOTE** This is a fork of Xeio's BagUtil addon: https://github.com/Xeio/BagUtil
-I"m just adding some extra bag types since it seems he's quit. 
+I"m just adding some extra bag types since it seems he's quit.
 
+# BagUtil
 Addon designed to make opening and selling junk bags from questing in *Secret World Legends* easier!
 
 BagUtil adds two buttons to the default inventory window. **Open** and **Sell**.

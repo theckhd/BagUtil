@@ -68,6 +68,7 @@ class BagUtil
     static var KRAMPUS_PRESENTS:Array = [LDBFormat.LDBGetText(50200, 8396874), LDBFormat.LDBGetText(50200, 8396885), LDBFormat.LDBGetText(50200, 8397420)];
     static var ANNIVERSARY_FLARES:Array = [LDBFormat.LDBGetText(50200, 8262189)];
     static var THIRD_AGE_BAGS:Array = [LDBFormat.LDBGetText(50200, 9290325)];
+	static var PVP_BAGS:Array = [LDBFormat.LDBGetText(50200, 9211745), LDBFormat.LDBGetText(50200, 9211707), LDBFormat.LDBGetText(50200, 9211706)]; // Champion's Cache
 	
 	public static function main(swfRoot:MovieClip):Void 
 	{
@@ -161,7 +162,8 @@ class BagUtil
 		m_openDropdownButton = CreateButton(x, "m_openButton", btnWidth, 5, 0, "Open...", true);
 		m_openDropdownButton.onMousePress = Delegate.create(this, OpenButtonPress);
 		
-        AddOpenDropdownButton(x, "Keys", btnWidth, "key");
+        AddOpenDropdownButton(x, "PVP", btnWidth, "pvp");
+		AddOpenDropdownButton(x, "Keys", btnWidth, "key");
         AddOpenDropdownButton(x, "Weapons", btnWidth, "weapon");
         AddOpenDropdownButton(x, "Talismans", btnWidth, "talisman");
         AddOpenDropdownButton(x, "Glyphs", btnWidth, "glyph");
@@ -408,6 +410,10 @@ class BagUtil
 			return true;
 		}
         if ((m_OpenBagsValue == "all" || m_OpenBagsValue == "key") && Utils.Contains(CONTAINER_KEYS, item.m_Name))
+		{
+			return true;
+		}
+		if ((m_OpenBagsValue == "all" || m_OpenBagsValue == "pvp") && Utils.Contains(PVP_BAGS, item.m_Name))
 		{
 			return true;
 		}

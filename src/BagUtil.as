@@ -43,7 +43,12 @@ class BagUtil
 	static var WEAPON_BAGS:Array = [LDBFormat.LDBGetText(50200, 9289681)];
 	static var GLYPH_BAGS:Array = [LDBFormat.LDBGetText(50200, 7719874), LDBFormat.LDBGetText(50200, 9284361)];
     static var CONTAINER_KEYS:Array = [LDBFormat.LDBGetText(50200, 9338616)];
-    
+	static var PVP_BAGS:Array = [LDBFormat.LDBGetText(50200, 9211745), LDBFormat.LDBGetText(50200, 9211707), LDBFormat.LDBGetText(50200, 9211706)]; // Champion's Cache
+	static var DISTILLATE_BAGS:Array = [
+		LDBFormat.LDBGetText(50200, 9290140), LDBFormat.LDBGetText(50200, 9305014), LDBFormat.LDBGetText(50200, 9305015), LDBFormat.LDBGetText(50200, 9305018), // weapon
+		LDBFormat.LDBGetText(50200, 9290280), LDBFormat.LDBGetText(50200, 9305013), LDBFormat.LDBGetText(50200, 9305016), LDBFormat.LDBGetText(50200, 9305017), // talisman
+		LDBFormat.LDBGetText(50200, 9290319), LDBFormat.LDBGetText(50200, 9290321)  // glyph and signet
+    ];
     static var CONTAINER_CLOTHING:Array = [
     LDBFormat.LDBGetText(50200, 9339631), LDBFormat.LDBGetText(50200, 9339634), LDBFormat.LDBGetText(50200, 9339639), //Shirt
     LDBFormat.LDBGetText(50200, 9339642), LDBFormat.LDBGetText(50200, 9339644), LDBFormat.LDBGetText(50200, 9339646), //Pants+Skirt
@@ -68,7 +73,6 @@ class BagUtil
     static var KRAMPUS_PRESENTS:Array = [LDBFormat.LDBGetText(50200, 8396874), LDBFormat.LDBGetText(50200, 8396885), LDBFormat.LDBGetText(50200, 8397420)];
     static var ANNIVERSARY_FLARES:Array = [LDBFormat.LDBGetText(50200, 8262189)];
     static var THIRD_AGE_BAGS:Array = [LDBFormat.LDBGetText(50200, 9290325)];
-	static var PVP_BAGS:Array = [LDBFormat.LDBGetText(50200, 9211745), LDBFormat.LDBGetText(50200, 9211707), LDBFormat.LDBGetText(50200, 9211706)]; // Champion's Cache
 	
 	public static function main(swfRoot:MovieClip):Void 
 	{
@@ -162,7 +166,8 @@ class BagUtil
 		m_openDropdownButton = CreateButton(x, "m_openButton", btnWidth, 5, 0, "Open...", true);
 		m_openDropdownButton.onMousePress = Delegate.create(this, OpenButtonPress);
 		
-        AddOpenDropdownButton(x, "PVP", btnWidth, "pvp");
+        AddOpenDropdownButton(x, "Dist Bags", btnWidth, "dist");
+		AddOpenDropdownButton(x, "PVP", btnWidth, "pvp");
 		AddOpenDropdownButton(x, "Keys", btnWidth, "key");
         AddOpenDropdownButton(x, "Weapons", btnWidth, "weapon");
         AddOpenDropdownButton(x, "Talismans", btnWidth, "talisman");
@@ -414,6 +419,10 @@ class BagUtil
 			return true;
 		}
 		if ((m_OpenBagsValue == "all" || m_OpenBagsValue == "pvp") && Utils.Contains(PVP_BAGS, item.m_Name))
+		{
+			return true;
+		}
+		if ((m_OpenBagsValue == "all" || m_OpenBagsValue == "dist") && Utils.Contains(DISTILLATE_BAGS, item.m_Name))
 		{
 			return true;
 		}
